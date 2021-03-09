@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import FileView
 
+from .views import FileView, LoginApiView, SignUpApiView
 
 app_name = "api"
-# app_name will help us do a reverse look-up latter.
+
 urlpatterns = [
+    path('login', LoginApiView.as_view(), name='login'),
+    path('signup', SignUpApiView.as_view(), name='signup'),
     path('keys/', FileView.as_view()),
-    path('keys/<slug:key>', FileView.as_view())
 ]
